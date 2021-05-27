@@ -2,6 +2,9 @@ import pandas
 
 print("Dataset collected\n\n")
 ds = pandas.read_csv('SalaryData.csv')
+print("\n")
+print("the dataset that I collected here\n")
+print(ds)
 
 x = ds['YearsExperience']
 y = ds['Salary']
@@ -18,10 +21,20 @@ model.fit(x,y)
 
 print("The predicted value of salary with x=2.5 is",model.predict([[2.5]]))
 
-import joblib
+print("""
+    If you want to save the model:
+         Y for yes
+         N for no
+      """)
 
-joblib.dump(model,'SalaryData.pk1')
+choice = input("enter your choice")
 
-print("model has been saved successfully")
+if "Y" in choice:
+  import joblib
+  joblib.dump(model,'SalaryData.pk1')
+  print("model has been saved successfully")
+  
+if "N" in choice:
+  break
 
 
